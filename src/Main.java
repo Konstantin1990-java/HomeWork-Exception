@@ -17,17 +17,18 @@ public class Main {
 
     //метод проверки пользовательских данных
     public static boolean userVerification(String login, String password, String confirmPassword) {
-        if (login.length() > 20 || conformityCheck(login)) {
+        if (login.length() > 20 || !login.matches("[a-zA-Z0-9_]+")) {
             throw new WrongLoginException();
         }
-        if (password.length() >= 20 || conformityCheck(password) || !password.equals(confirmPassword)) {
+        if (password.length() >= 20 || !password.matches("[a-zA-Z0-9_]+") || !password.equals(confirmPassword)) {
             throw new WrongPasswordException();
         }
         return true;
     }
+}
 
-    //метод для проверки логина и пароля на требуемые символы
-    public static boolean conformityCheck(String str) {
+//метод для проверки логина и пароля на требуемые символы
+   /* public static boolean conformityCheck(String str) {
         char[] arr = {'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F',
                 'g', 'G', 'h', 'H', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'm',
                 'M', 'n', 'N', 'o', 'O', 'p', 'P', 'q', 'Q', 'r', 'R', 's', 'S',
@@ -47,5 +48,4 @@ public class Main {
         }
         return !result;
 
-    }
-}
+    }*/
